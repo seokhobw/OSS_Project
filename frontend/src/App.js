@@ -3,6 +3,7 @@ import * as pdfjsLib from "pdfjs-dist/build/pdf";
 
 pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
+// 배포/로컬 모두 대응: 기본은 같은 도메인(/api), 필요하면 환경변수로 백엔드 주소 지정
 
 function App() {
   const [pdfFile, setPdfFile] = useState(null);
@@ -71,7 +72,7 @@ function App() {
     setAssignments("");
 
     try {
-      const res = await fetch("http://localhost:8000/api/generate", {
+        const res = await fetch("/api/generate", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -33,11 +33,18 @@ MODEL_NAME = "solar-pro2"
 
 app = FastAPI(title="Upstage Quiz Backend")
 
-# 🔥 로컬 개발 편하게 하려고 CORS 전부 허용 (데모용)
+# CORS 설정: 기본은 전체 허용(데모용). 배포 시에는 CORS_ORIGINS 환경변수로 제한 추천.
+# 예) CORS_ORIGINS="https://your-frontend.vercel.app,https://your-custom-domain.com"
+_origins_env = os.getenv("CORS_ORIGINS", "*")
+if _origins_env.strip() == "*":
+    _allow_origins = ["*"]
+else:
+    _allow_origins = [o.strip() for o in _origins_env.split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],      # 모든 Origin 허용
-    allow_credentials=False,  # "*"와 같이 쓸 때는 False
+    allow_origins=_allow_origins,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )

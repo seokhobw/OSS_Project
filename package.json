@@ -1,0 +1,11 @@
+{
+  "name": "upstage-quiz-root",
+  "private": true,
+  "devDependencies": {
+    "concurrently": "^9.0.0"
+  },
+  "scripts": {
+    "install:all": "npm --prefix frontend install",
+    "start": "concurrently -k \"npm --prefix frontend start\" \"cd backend && python -m uvicorn main:app --reload --port 8000\""
+  }
+}
