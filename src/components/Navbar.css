@@ -1,0 +1,35 @@
+.side-navbar {
+  width: 200px;
+  height: 100vh;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e5e5;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: bold;
+  color: #58cc02;
+  margin-bottom: 40px;
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-links li {
+  margin-bottom: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4b4b4b;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #58cc02;
+}
